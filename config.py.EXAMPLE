@@ -1,0 +1,11 @@
+MQTT_HOST="openhab.lan"
+MQTT_PORT=1883
+MQTT_PASSWORD="SeCrEt"
+MQTT_USER="username"
+MQTT_TOPIC_PREFIX="weather/weatherbit"
+MQTT_CLIENT="weatherbit_poller"
+
+WEATHERBIT_KEY='XXXXX'
+WEATHERBIT_COUNTRY='NL'
+WEATHERBIT_POSTAL_CODE='1234AB'
+WEATHERBIT_ENDPOINT='https://api.weatherbit.io/v2.0/current'
