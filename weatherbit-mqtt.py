@@ -27,12 +27,14 @@ try:
 except Exception as e:
     client.publish(MQTT_TOPIC_PREFIX+'/status', e.__str__())
     logging.log(logging.ERROR, e.__str__())
+    client.disconnect()
     sys.exit()
 
 if r.status_code != 200:
-    err=f"ERROR, Status={}, text={}".format(r.status_code, r.text)
+    err="ERROR, Status={}, text={}".format(r.status_code, r.text)
     client.publish(MQTT_TOPIC_PREFIX+'/status')
     logging.log(logging.ERROR, err)
+    client.disconnect()
     sys.exit()
 res=json.dumps(r.json()['data'][0])
 
@@ -40,3 +42,4 @@ res=json.dumps(r.json()['data'][0])
 
 client.publish(MQTT_TOPIC_PREFIX+'/data', payload=res)
 client.publish(MQTT_TOPIC_PREFIX+'/status', payload='OK')
+client.disconnect()
